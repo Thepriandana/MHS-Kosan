@@ -2,6 +2,9 @@
 session_start();
 if(isset($_SESSION['id_applicant'])){
   header("Location: dashboard.php");
+}else if(isset($_SESSION['id_officer'])){
+  header("Location: officer/dashboard.php");
+  die();
 }else if(!empty($_POST)){
   if(isset($_POST['username'], $_POST['password'],$_POST['repassword'], $_POST['email'], $_POST['name'],  $_POST['monthly'])
   && !empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['repassword'])
