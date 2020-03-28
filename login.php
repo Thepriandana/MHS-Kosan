@@ -45,6 +45,18 @@ if(isset($_SESSION['id_applicant'])){
     die();
   }
 }else{
+  $error = '';
+  if(isset($_SESSION['error'])){
+    if($_SESSION['error'] === "empty"){
+      $error = "Please fill form correctly";
+    }else if($_SESSION['error'] === "notmatch"){
+      $error = "Password and Repassword is not match";
+    }else if($_SESSION['error'] === "username"){
+      $error = "Username is not available";
+    }
+    $error = '<span class="d-block alert bg-light text-danger shadow-sm w-100 border rounded"><i class="fa fa-exclamation-triangle mr-2"></i>'.$errno.'</span>';
+    unset($_SESSION['error']);
+  }
   die('<!DOCTYPE html>
   <html lang="en" dir="ltr">
     <head>
@@ -61,6 +73,7 @@ if(isset($_SESSION['id_applicant'])){
         <div class="col-md-8 border rounded bg-secondary mr-3 d-none d-md-block">
         </div>
         <div class="col-md-3 border rounded py-3">
+          '.$error.'
           <form method="POST">
             <div class="form-group">
               <label>Username</label>
