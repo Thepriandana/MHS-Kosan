@@ -36,7 +36,7 @@ class SQL{
         elseif(preg_match("/^(" . implode("|", array("delete", "insert", "update")) . ") /i", $this->sql))
           return $stmt->rowCount();
       }
-    }catch(PDOException $e){
+    }catch(PDOException $ex){
       die("SQL Error: ". $ex);
       return false;
     }
