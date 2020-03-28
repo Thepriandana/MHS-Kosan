@@ -1,0 +1,34 @@
+.l-active{
+  background: crimson!important;
+}
+.l-home{
+  mask: url("../images/home.svg");
+}
+.l-residence{
+  mask: url("../images/residence.svg");
+}
+.l-application{
+  mask: url("../images/application.svg");
+}
+.l-profile{
+  mask: url("../images/profile.svg");
+}
+.l-logout{
+  mask: url("../images/logout.svg");
+}
+.l:hover{
+  background: crimson;
+}
+.l{
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background: grey;
+  mask-size: cover;
+}
+.content{
+  min-height: 15rem;
+}
+.bottom{
+  min-height: 5rem;
+}
