@@ -10,7 +10,7 @@ if(isset($_SESSION['id_applicant'])){
   if(isset($_POST['username'], $_POST['password']) && !empty($_POST['username']) && !empty($_POST['password'])){
     require_once("main.php");
     $sql = new SQL();
-    $bind[':username'] = $_POST['username'];
+    $bind[':username'] = strtolower($_POST['username']);
     $usercheck = $sql->run("SELECT * FROM user WHERE username = :username", $bind);
     if(empty($usercheck)){
       $_SESSION['error'] = "username";
