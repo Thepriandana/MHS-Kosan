@@ -14,7 +14,7 @@ if(isset($_SESSION['id_applicant'])){
     }else{
       require_once("main.php");
       $sql = new SQL();
-      $bind[':username'] = $_POST['username'];
+      $bind[':username'] = strtolower($_POST['username']);
       $usercheck = $sql->run("SELECT * FROM user WHERE username = :username", $bind);
       if(!empty($usercheck)){
         $_SESSION['error'] = "username";
@@ -25,7 +25,7 @@ if(isset($_SESSION['id_applicant'])){
         $userID = $sql->run("INSERT INTO user VALUES('', :username, :password, :name)", $bind);
         unset($bind);
         $bind[':id']       = $userID;
-        $bind[':email']    = $_POST['email'];
+        $bind[':email']    = strtolower($_POST['email']);
         $bind[':monthly']  = $_POST['monthly'];
         $applicantID = $sql->run("INSERT INTO applicant VALUES('', :id, :email, :monthly)", $bind);
         $_SESSION['id_applicant'] = $applicantID;
