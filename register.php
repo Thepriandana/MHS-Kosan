@@ -28,6 +28,7 @@ if(isset($_SESSION['id_applicant'])){
         $bind[':email']    = strtolower($_POST['email']);
         $bind[':monthly']  = $_POST['monthly'];
         $applicantID = $sql->run("INSERT INTO applicant VALUES('', :id, :email, :monthly)", $bind);
+        $_SESSION['id_user'] = $userID;
         $_SESSION['id_applicant'] = $applicantID;
         header("Location: dashboard.php");
         die();
@@ -47,7 +48,7 @@ if(isset($_SESSION['id_applicant'])){
     }else if($_SESSION['error'] === "username"){
       $error = "Username is not available";
     }
-    $error = '<span class="d-block alert bg-light text-danger shadow-sm w-100 border rounded"><i class="fa fa-exclamation-triangle mr-2"></i>'.$errno.'</span>';
+    $error = '<span class="d-block alert alert-danger text-center w-100 p-1">'.$error.'</span>';
     unset($_SESSION['error']);
   }
   die('<!DOCTYPE html>
