@@ -28,6 +28,7 @@ if(isset($_SESSION['id_applicant'])){
         $bind[':id'] = $validate[0]['userID'];
         $isApplicant = $sql->run("SELECT * FROM applicant WHERE userID = :id", $bind);
         $isOfficer   = $sql->run("SELECT * FROM housingofficer WHERE userID = :id", $bind);
+        $_SESSION['id_user'] = $validate[0]['userID'];
         if(empty($isApplicant)){
           $_SESSION['id_officer'] = $isOfficer[0]['staffID'];
           header("Location: officer/dashboard.php");
@@ -54,7 +55,7 @@ if(isset($_SESSION['id_applicant'])){
     }else if($_SESSION['error'] === "username"){
       $error = "Username is not available";
     }
-    $error = '<span class="d-block alert bg-light text-danger shadow-sm w-100 border rounded"><i class="fa fa-exclamation-triangle mr-2"></i>'.$errno.'</span>';
+    $error = '<span class="d-block alert alert-danger text-center w-100 p-1">'.$error.'</span>';
     unset($_SESSION['error']);
   }
   die('<!DOCTYPE html>
