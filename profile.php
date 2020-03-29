@@ -29,7 +29,7 @@ if(!isset($_SESSION['id_applicant'])){
     if($_SESSION['error'] === "empty"){
       $error = "Please fill form correctly";
     }
-    $error = '<span class="d-block alert bg-light text-danger shadow-sm w-100 border rounded"><i class="fa fa-exclamation-triangle mr-2"></i>'.$errno.'</span>';
+    $error = '<span class="d-block alert alert-danger text-center w-100 p-1">'.$$error.'</span>';
     unset($_SESSION['error']);
   }
 

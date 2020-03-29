@@ -25,7 +25,7 @@ if(!isset($_SESSION['id_applicant'])){
   }else{
     $_SESSION['error'] = "empty";
   }
-  header("Location: profile.php");
+  header("Location: password.php");
   die();
 }else{
   require_once("main.php");
@@ -41,7 +41,7 @@ if(!isset($_SESSION['id_applicant'])){
     }else if($_SESSION['error'] === "current"){
       $error = "Wrong current password";
     }
-    $error = '<span class="d-block alert bg-light text-danger shadow-sm w-100 border rounded"><i class="fa fa-exclamation-triangle mr-2"></i>'.$errno.'</span>';
+    $error = '<span class="d-block alert alert-danger text-center w-100 p-1">'.$error.'</span>';
     unset($_SESSION['error']);
   }
 
