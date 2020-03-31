@@ -32,3 +32,6 @@
 .bottom{
   min-height: 5rem;
 }
+.row-link{
+  cursor: pointer;
+}
