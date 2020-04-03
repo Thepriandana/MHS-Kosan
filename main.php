@@ -34,7 +34,10 @@ class SQL{
         if(preg_match("/^(" . implode("|", array("select", "describe", "pragma")) . ") /i", $this->sql))
           return $stmt->fetchAll(PDO::FETCH_ASSOC);
         elseif(preg_match("/^(" . implode("|", array("delete", "insert", "update")) . ") /i", $this->sql))
-          return $stmt->rowCount();
+          if(strpos(strtolower($this->sql), "insert") !== false)
+            return $this->db->lastInsertId();
+          else
+            return $stmt->rowCount();
       }
     }catch(PDOException $ex){
       die("SQL Error: ". $ex);
