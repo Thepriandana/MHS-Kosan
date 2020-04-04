@@ -1,30 +1,17 @@
 .l-active{
-  background: crimson!important;
-}
-.l-home{
-  mask: url("../images/home.svg");
-}
-.l-residence{
-  mask: url("../images/residence.svg");
-}
-.l-application{
-  mask: url("../images/application.svg");
-}
-.l-profile{
-  mask: url("../images/profile.svg");
-}
-.l-logout{
-  mask: url("../images/logout.svg");
+  color: crimson!important;
 }
 .l:hover{
-  background: crimson;
+  color: crimson!important;
 }
 .l{
   display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  background: grey;
-  mask-size: cover;
+  color: grey;
+}
+.nav-link{
+  width: 60px;
+  text-align: center;
+  font-size: 1.2rem;
 }
 .content{
   min-height: 15rem;
