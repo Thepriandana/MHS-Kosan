@@ -10,6 +10,7 @@ if(!isset($_SESSION['id_applicant'])){
   $sql = new SQL();
   $bind[':id'] = $_SESSION['id_user'];
   $bio = $sql->run("SELECT fullname as name FROM user WHERE userID = :id", $bind);
+  $bind[':id'] = $_SESSION['id_applicant'];
   $applicant = $sql->run("SELECT a.applicationID, a.residenceID, a.status, r.monthlyRental, (SELECT COUNT(*) FROM unit WHERE residenceID = a.residenceID AND availability != 'used') as unit FROM application AS a INNER JOIN residence AS r ON r.residenceID = a.residenceID WHERE a.applicantID = :id", $bind);
   $applicantList = '<tr><td colspan="5" class="text-center">There is no Application request</td></tr>';
   if(!empty($applicant)){
