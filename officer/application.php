@@ -13,7 +13,7 @@ if(isset($_SESSION['id_applicant'])){
   if(!empty($application)){
     $applicationList = '';
     foreach($application as $r){
-      $applicationList .= '<tr class="row-link" data-href="allocating.php?id='.$r['residenceID'].'"><td>'.$r['residenceID'].'</td><td>'.$r['unit'].'</td><td>'.$r['monthlyRental'].'</td><td>'.$r['fullname'].'</td><td>'.$r['monthlyIncome'].'</td><td>'.$r['requiredMonth'].'</td><td>'.$r['requiredYear'].'</td><th>'.$r['status'].'</th>';
+      $applicationList .= '<tr class="row-link" data-href="allocating.php?id='.$r['applicationID'].'"><td>'.$r['residenceID'].'</td><td>'.$r['unit'].'</td><td>'.$r['monthlyRental'].'</td><td>'.$r['fullname'].'</td><td>'.$r['monthlyIncome'].'</td><td>'.$r['requiredMonth'].'</td><td>'.$r['requiredYear'].'</td><th>'.$r['status'].'</th>';
     }
   }
   if(isset($_SESSION['error'])){
