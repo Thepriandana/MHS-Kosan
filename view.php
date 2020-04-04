@@ -13,7 +13,7 @@ if(!isset($_SESSION['id_applicant'])){
   require_once("main.php");
   $sql = new SQL();
   $bind[':id'] = $_GET['id'];
-  $application = $sql->run("SELECT a.applicationID, a.residenceID, a.status, r.monthlyRental, (SELECT COUNT(*) FROM unit WHERE residenceID = a.residenceID AND availability != 'used') as unit FROM application AS a INNER JOIN residence AS r ON r.residenceID = a.residenceID WHERE a.applicationID = :id", $bind);
+  $application = $sql->run("SELECT a.applicationID, a.residenceID, a.status, a.requiredMonth, a.requiredYear, r.monthlyRental, (SELECT COUNT(*) FROM unit WHERE residenceID = a.residenceID AND availability != 'used') as unit FROM application AS a INNER JOIN residence AS r ON r.residenceID = a.residenceID WHERE a.applicationID = :id", $bind);
   if(empty($application)){
     $_SESSION['error'] = 'id';
     header("Location: application.php");
@@ -27,7 +27,7 @@ if(!isset($_SESSION['id_applicant'])){
       if(isset($_POST['month'], $_POST['year']) && !empty($_POST['month']) && !empty($_POST['year'])){
         $bind[':m'] = $_POST['month'];
         $bind[':y'] = $_POST['year'];
-        $sql->run("UPDATE application SET requiredMonth = :m, requiredYear = :y WHERE applicantID = :id", $bind);
+        $sql->run("UPDATE application SET requiredMonth = :m, requiredYear = :y WHERE applicationID = :id", $bind);
       }else{
         $_SESSION['error'] = "empty";
       }
@@ -60,11 +60,11 @@ if(!isset($_SESSION['id_applicant'])){
       }else{
         $form = '<form method="POST">
           <div class="form-group">
-            <label>Require Month</label>
+            <label>Required Month</label>
             <input type="number" class="form-control" name="month" required placeholder="'.$application[0]['requiredMonth'].'" value="'.$application[0]['requiredMonth'].'">
           </div>
           <div class="form-group">
-            <label>Require Year</label>
+            <label>Required Year</label>
             <input type="number" class="form-control" name="year" required placeholder="'.$application[0]['requiredYear'].'" value="'.$application[0]['requiredYear'].'">
           </div>
           <div class="d-flex">
@@ -94,19 +94,19 @@ if(!isset($_SESSION['id_applicant'])){
           <div class="col-md-1 border-right p-0">
             <ul class="nav d-md-flex">
               <li class="nav-item">
-                <a class="nav-link" href="dashboard.php" alt="Dashboard"><span class="l l-home"></span></a>
+                <a class="nav-link" href="dashboard.php" alt="Dashboard"><span class="l fa fa-home"></span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="residence.php" alt="Residence"><span class="l l-residence"></span></a>
+                <a class="nav-link" href="residence.php" alt="Residence"><span class="l fa fa-city"></span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="application.php" alt="Application"><span class="l l-application l-active"></span></a>
+                <a class="nav-link" href="application.php" alt="Application"><span class="l fa fa-list l-active"></span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="profile.php" alt="Profile"><span class="l l-profile"></span></a>
+                <a class="nav-link" href="profile.php" alt="Profile"><span class="l fa fa-user"></span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="logout.php" alt="Log out"><span class="l l-logout"></span></a>
+                <a class="nav-link" href="logout.php" alt="Log out"><span class="l fa fa-sign-out-alt"></span></a>
               </li>
             </ul>
           </div>
