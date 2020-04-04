@@ -52,19 +52,19 @@ if(!isset($_SESSION['id_applicant'])){
         <div class="col-md-1 border-right p-0">
           <ul class="nav d-md-flex">
             <li class="nav-item">
-              <a class="nav-link" href="dashboard.php" alt="Dashboard"><span class="l l-home"></span></a>
+              <a class="nav-link" href="dashboard.php" alt="Dashboard"><span class="l fa fa-home"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="residence.php" alt="Residence"><span class="l l-residence"></span></a>
+              <a class="nav-link" href="residence.php" alt="Residence"><span class="l fa fa-city"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="application.php" alt="Application"><span class="l l-application"></span></a>
+              <a class="nav-link" href="application.php" alt="Application"><span class="l fa fa-list"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="profile.php" alt="Profile"><span class="l l-profile l-active"></span></a>
+              <a class="nav-link" href="profile.php" alt="Profile"><span class="l fa fa-user l-active"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="logout.php" alt="Log out"><span class="l l-logout"></span></a>
+              <a class="nav-link" href="logout.php" alt="Log out"><span class="l fa fa-sign-out-alt"></span></a>
             </li>
           </ul>
         </div>
