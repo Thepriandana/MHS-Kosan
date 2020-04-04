@@ -38,26 +38,27 @@ if(isset($_SESSION['id_applicant'])){
         <div class="col-md-1 border-right p-0">
           <ul class="nav d-md-flex">
             <li class="nav-item">
-              <a class="nav-link" href="dashboard.php" alt="Dashboard"><span class="l l-home"></span></a>
+              <a class="nav-link" href="dashboard.php" alt="Dashboard"><span class="l fa fa-home"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="residence.php" alt="Residence"><span class="l l-residence l-active"></span></a>
+              <a class="nav-link" href="residence.php" alt="Residence"><span class="l fa fa-city l-active"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="application.php" alt="Application"><span class="l l-application"></span></a>
+              <a class="nav-link" href="application.php" alt="Application"><span class="l fa fa-list"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="profile.php" alt="Profile"><span class="l l-profile"></span></a>
+              <a class="nav-link" href="profile.php" alt="Profile"><span class="l fa fa-user"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="logout.php" alt="Log out"><span class="l l-logout"></span></a>
+              <a class="nav-link" href="logout.php" alt="Log out"><span class="l fa fa-sign-out-alt"></span></a>
             </li>
           </ul>
         </div>
         <div class="col-md-11 pr-md-0">
           <p class="text-right">'.((isset($_SESSION['id_user'])) ? ucwords($bio[0]['name']) : null).'</p>
+	  <p><h2>Residence List</h2></p>
           <div class="content p-2">
-            <table class="table table-hover table-striped table-sm border shadow-sm rounded">
+	    <table class="table table-hover table-striped table-sm border shadow-sm rounded">
               <thead>
                 <th>Residence ID</th>
                 <th>Address</th>
