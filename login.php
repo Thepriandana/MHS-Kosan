@@ -49,11 +49,15 @@ if(isset($_SESSION['id_applicant'])){
   $error = '';
   if(isset($_SESSION['error'])){
     if($_SESSION['error'] === "empty"){
-      $error = "Please fill form correctly";
+      $error = "Please fill required fields.";
     }else if($_SESSION['error'] === "notmatch"){
-      $error = "Password and Repassword is not match";
+      $error = "Password and Repassword does not match";
     }else if($_SESSION['error'] === "username"){
-      $error = "Username is not available";
+      $error = "Username does not exist";
+    }else if($_SESSION['error'] === "current"){
+      $error = "Wrong current password";
+    }else if($_SESSION['error'] === "password"){
+      $error = "Wrong password";
     }
     $error = '<span class="d-block alert alert-danger text-center w-100 p-1">'.$error.'</span>';
     unset($_SESSION['error']);
@@ -77,11 +81,11 @@ if(isset($_SESSION['id_applicant'])){
           '.$error.'
           <form method="POST">
             <div class="form-group">
-              <label>Username</label>
+              <label>Username*</label>
               <input type="text" class="form-control" name="username">
             </div>
             <div class="form-group">
-              <label>Password</label>
+              <label>Password*</label>
               <input type="password" class="form-control" name="password">
             </div>
             <button class="btn btn-primary d-flex ml-auto" type="submit">Sign In</button>
