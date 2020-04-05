@@ -50,6 +50,7 @@ if(isset($_SESSION['id_applicant'])){
         }
         $form = '';
         if($application[0]['status'] == "Approve"){
+          $bind[':id'] = $_GET['id'];
           $allocation = $sql->run("SELECT * FROM allocation WHERE applicationID = :id", $bind);
           $a = $allocation[0];
           $form = '<table class="table table-hover table-striped table-sm border">

@@ -22,6 +22,8 @@ if(isset($_SESSION['id_applicant'])){
         $sql->run("DELETE FROM application WHERE residenceID = :id;
           DELETE FROM unit WHERE residenceID = :id;
           DELETE FROM residence WHERE residenceID = :id", $bind);
+          header("Location: residence.php");
+          die();
       }else if(!empty($_POST)){
         $count = $sql->run("SELECT COUNT(*) as total FROM unit WHERE residenceID = :id", $bind);
         $u = intval($_POST['unit']);
