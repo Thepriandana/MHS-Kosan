@@ -67,6 +67,13 @@ if(isset($_SESSION['id_applicant'])){
         </head>
         <body>
           <div class="container mt-5">
+          <div class="container-fluid col-md-11 row mx-auto mr-3 mt-3">
+              <div class="col-sm-1"><img src="img/logo_dbkl.png" class="img-fluid" width="100"></div><div class="col-sm-11"><h1>MHS Kosan</h1></div></div>
+           <div class="col-md-11 mx-auto mt-3">
+        <nav class="breadcrumb">
+    <a class="breadcrumb-item" href="index.php">MHSKosan</a>
+    <a class="breadcrumb-item" href="#">Residence</a>
+    </nav></div>
             <div class="col-md-10 border shadow-sm py-3 mx-auto row">
               <div class="col-md-1 border-right p-0">
                 <ul class="nav d-md-flex">
@@ -83,12 +90,12 @@ if(isset($_SESSION['id_applicant'])){
                     <a class="nav-link" href="profile.php" alt="Profile"><span class="l fa fa-user"></span></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="logout.php" alt="Log out"><span class="l fa fa-sign-out-alt"></span></a>
+                    <a class="nav-link" href="logout.php" title="Logout" alt="Log out" onclick="return confirm(\'Are you sure?\')"><span class="l fa fa-sign-out-alt"></span></a>
                   </li>
                 </ul>
               </div>
               <div class="col-md-11 pr-md-0">
-                <p class="text-right">'.((isset($_SESSION['id_user'])) ? ucwords($bio[0]['name']) : null).'</p>
+                <div><span class="fa fa-user-circle"></span> <a class="text" href="profile.php">'.((isset($_SESSION['id_user'])) ? ucwords($bio[0]['name']) : null).'</a></div>
                 <div class="content p-2">
                   <form class="col-md-6 p-0" method="POST">
                     <div class="form-group">
@@ -110,6 +117,7 @@ if(isset($_SESSION['id_applicant'])){
                       <input type="number" class="form-control" name="monthly" placeholder="'.$residence[0]['monthlyRental'].'" value="'.$residence[0]['monthlyRental'].'" required>
                     </div>
                     <div class="d-flex">
+                    <a href="application.php"><button type="button" class="btn btn-sm btn-confirm mr-2">Back</button></a>
                       <a class="d-block ml-auto mr-2" href="edit.php?id='.$_GET['id'].'&remove=1" onclick="return confirm(\'Are you sure?\')"><button class="btn btn-danger btn-sm" type="button">Remove</button></a>
                       <button class="btn btn-primary btn-sm" type="submit">Save Changes</button>
                     </div>

@@ -60,6 +60,15 @@ if(!isset($_SESSION['id_applicant'])){
   </head>
   <body>
     <div class="container mt-5">
+      <div class="container-fluid col-md-11 row mx-auto mr-3 mt-3">
+              <div class="col-sm-1"><img src="img/logo_dbkl.png" class="img-fluid" width="100"></div><div class="col-sm-11"><h1>MHS Kosan</h1></div></div>
+           <div class="col-md-11 mx-auto mt-3">
+        <nav class="breadcrumb">
+    <a class="breadcrumb-item" href="index.php">MHSKosan</a>
+    <a class="breadcrumb-item" href="profile.php">Edit Profile</a>
+    <a class="breadcrumb-item" href="#">Change Password</a>
+    <a class="breadcrumb-item" href="#">Submit Application</a>
+    </nav></div>
       <div class="col-md-10 border shadow-sm py-3 mx-auto row">
         <div class="col-md-1 border-right p-0">
           <ul class="nav d-md-flex">
@@ -67,22 +76,22 @@ if(!isset($_SESSION['id_applicant'])){
               <a class="nav-link" href="dashboard.php" alt="Dashboard"><span class="l fa fa-home"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="residence.php" alt="Residence"><span class="l fa fa-city"></span></a>
+              <a class="nav-link" href="residence.php" alt="Residence"><span class="l fa fa-city l-active"></span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="application.php" alt="Application"><span class="l fa fa-list"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="profile.php" alt="Profile"><span class="l fa fa-user l-active"></span></a>
+              <a class="nav-link" href="profile.php" alt="Profile"><span class="l fa fa-user"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="logout.php" alt="Log out"><span class="l fa fa-sign-out-alt"></span></a>
+              <a class="nav-link" href="logout.php" title="Logout" alt="Log out"><span class="l fa fa-sign-out-alt"></span></a>
             </li>
           </ul>
         </div>
         <div class="col-md-11 pr-md-0">
-          <p class="text-right">'.ucwords($bio[0]['name']).'</p>
-          <div class="content p-2">
+           <div><span class="fa fa-user-circle"></span> <a class="text" href="profile.php">'.((isset($_SESSION['id_user'])) ? ucwords($bio[0]['name']) : null).'</a></div>
+          <div class="content p-2 mt-3">
             <div class="col-md-5 p-0">
               <form method="POST">
                 '.$error.'

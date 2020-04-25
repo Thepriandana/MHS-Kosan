@@ -63,22 +63,27 @@ if(isset($_SESSION['id_applicant'])){
     unset($_SESSION['error']);
   }
   die('<!DOCTYPE html>
-  <html lang="en" dir="ltr">
-    <head>
+<html lang="en" dir="ltr"><head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
       <title>Login | Kosan</title>
-      <link rel="icon" href="image/icon.svg">
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
       <script src="js/bootstrap.min.js" type="text/javascript"></script>
     </head>
     <body>
-      <div class="container row mx-auto mt-5">
-        <div class="col-md-8 border rounded bg-secondary mr-3 d-none d-md-block">
+    <div class="container row mx-auto mt-5">
+    <div class="container-fluid row mx-auto mr-3 mt-3">
+              <div class="col-sm-1"><img src="img/logo_dbkl.png" class="img-fluid" width="150"></div><div class="col-sm-11"><h1>MHS Kosan</h1></div></div>
+        <div class="col-md-11 mx-8 mt-3">
+        <nav class="breadcrumb">
+    <a class="breadcrumb-item" href="index.php">MHSKosan</a>
+    <a class="breadcrumb-item" href="#">Register</a>
+    </nav></div>
+        <div class="col-md-8 border rounded mr-2 d-none d-md-block">
+    <img src="img/login_banner3.jpg" class="img-fluid rounded" alt="Login">
         </div>
         <div class="col-md-3 border rounded py-3">
-          '.$error.'
           <form method="POST">
             <div class="form-group">
               <label>Username*</label>
@@ -90,9 +95,11 @@ if(isset($_SESSION['id_applicant'])){
             </div>
             <button class="btn btn-primary d-flex ml-auto" type="submit">Sign In</button>
           </form>
+    <div class="form-group text-center mt-3"><p>Don&apos;t have account?
+      <a href="register.php">Register</a></p></div>
         </div>
       </div>
-    </body>
-  </html>');
+    
+</body></html>');
 }
 ?>

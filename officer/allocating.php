@@ -54,6 +54,10 @@ if(isset($_SESSION['id_applicant'])){
           $allocation = $sql->run("SELECT * FROM allocation WHERE applicationID = :id", $bind);
           $a = $allocation[0];
           $form = '<table class="table table-hover table-striped table-sm border">
+          <tr>
+          <td>Address</td>
+          <td>Address Here</td>
+          </tr>
             <tr>
               <td>Unit No</td>
               <td>'.$a['unitNo'].'</td>
@@ -74,6 +78,10 @@ if(isset($_SESSION['id_applicant'])){
         }else{
           $form = '<form method="POST">
             <div class="form-group">
+                <label>Address</label>
+                <p name="address">*Address Here, not for editing, only display*</p>
+            </div>
+            <div class="form-group">
               <label>Unit No</label>
               <select class="form-control" name="unit">'.$unitList.'</select>
             </div>
@@ -89,6 +97,7 @@ if(isset($_SESSION['id_applicant'])){
               </select>
             </div>
             <div class="d-flex">
+                <a href="application.php"><button type="button" class="btn btn-sm btn-confirm mr-2">Back</button></a>
               <a href="allocating.php?id='.$_GET['id'].'&reject" class="ml-auto d-block"><button type="button" class="btn btn-sm btn-danger mr-2">Reject</button></a>
               <a href="allocating.php?id='.$_GET['id'].'&wait"><button type="button" class="btn btn-sm btn-warning mr-2">Send to waitlist</button></a>
               <button class="btn btn-sm btn-primary" type="submit">Approve</button>
@@ -115,6 +124,14 @@ if(isset($_SESSION['id_applicant'])){
         </head>
         <body>
           <div class="container mt-5">
+          <div class="container-fluid col-md-11 row mx-auto mr-3 mt-3">
+              <div class="col-sm-1"><img src="img/logo_dbkl.png" class="img-fluid" width="100"></div><div class="col-sm-11"><h1>MHS Kosan</h1></div></div>
+           <div class="col-md-11 mx-auto mt-3">
+        <nav class="breadcrumb">
+    <a class="breadcrumb-item" href="index.php">MHSKosan</a>
+    <a class="breadcrumb-item" href="application.php">Application</a>
+    <a class="breadcrumb-item" href="#">Allocating</a>
+    </nav></div>
             <div class="col-md-10 border shadow-sm py-3 mx-auto row">
               <div class="col-md-1 border-right p-0">
                 <ul class="nav d-md-flex">
@@ -131,13 +148,13 @@ if(isset($_SESSION['id_applicant'])){
                     <a class="nav-link" href="profile.php" alt="Profile"><span class="l fa fa-user"></span></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="logout.php" alt="Log out"><span class="l fa fa-sign-out-alt"></span></a>
+                    <a class="nav-link" href="logout.php" title="Logout" alt="Log out" onclick="return confirm(\'Are you sure?\')"><span class="l fa fa-sign-out-alt"></span></a>
                   </li>
                 </ul>
               </div>
               <div class="col-md-11 pr-md-0">
-                <p class="text-right">'.((isset($_SESSION['id_user'])) ? ucwords($bio[0]['name']) : null).'</p>
-                <div class="content p-2">
+                <div><span class="fa fa-user-circle"></span><a class="text" href="profile.php">'.ucwords($bio[0]['name']).'</a></div>
+                <div class="content p-2 mt-3">
                   <table class="table table-hover table-striped table-sm border shadow-sm rounded">
                     <thead>
                       <th>Residence ID</th>
