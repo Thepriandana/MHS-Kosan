@@ -137,7 +137,7 @@ if(isset($_SESSION['id_applicant'])){
                       <input type="number" class="form-control" name="monthly" placeholder="'.$residence[0]['monthlyRental'].'" value="'.$residence[0]['monthlyRental'].'" required>
                     </div>
                     <div class="d-flex">
-                    <a href="application.php"><button type="button" class="btn btn-sm btn-confirm mr-2">Back</button></a>
+                    <a href="residence.php"><button type="button" class="btn btn-sm btn-confirm mr-2">Back</button></a>
                       <a class="d-block ml-auto mr-2" href="edit.php?id='.$_GET['id'].'&remove=1" onclick="return confirm(\'Are you sure?\')"><button class="btn btn-danger btn-sm" type="button">Remove</button></a>
                       <button class="btn btn-primary btn-sm" type="submit">Save Changes</button>
                     </div>
