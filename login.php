@@ -68,17 +68,21 @@ if(isset($_SESSION['id_applicant'])){
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
       <title>Login | Kosan</title>
-      <link rel="icon" href="image/icon.svg">
+      <link rel="icon" href="images/logo_kosan.ico">
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
       <script src="js/bootstrap.min.js" type="text/javascript"></script>
     </head>
     <body>
       <div class="container row mx-auto mt-5">
-        <div class="col-md-8 border rounded bg-secondary mr-3 d-none d-md-block">
+        <div class="col-md-8 mr-3 d-none d-md-block">
+          <div class="row">
+          <img class="img-fluid w-100" src="images/people-enjoying-cherry-tree-blooming-season-park_74855-5285-removebg-preview.png"/>
+          </div>
         </div>
-        <div class="col-md-3 border rounded py-3">
+        <div class="col-md-3 border rounded py-3 h-50 mt-5 shadow-sm bg-white">
           '.$error.'
+          <a href="residence.php"><img src="images/logo_kosan.png" class="img-fluid"></a>
           <form method="POST">
             <div class="form-group">
               <label>Username*</label>
@@ -90,6 +94,7 @@ if(isset($_SESSION['id_applicant'])){
             </div>
             <button class="btn btn-primary d-flex ml-auto" type="submit">Sign In</button>
           </form>
+          <small class="mt-3 d-block text-center"><a href="register.php" class="nav-link">Create a new account instead?</a></small>
         </div>
       </div>
     </body>

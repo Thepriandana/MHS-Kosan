@@ -57,23 +57,23 @@ if(isset($_SESSION['id_applicant'])){
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
       <title>Login | Kosan</title>
-      <link rel="icon" href="image/icon.svg">
+      <link rel="icon" href="images/logo_kosan.ico">
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
       <script src="js/bootstrap.min.js" type="text/javascript"></script>
     </head>
-    <body>
+    <body class="bg-light">
       <div class="container row mx-auto mt-4">
-        <div class="col-md-4 border rounded py-5 mx-auto">
+        <div class="col-md-4 border rounded py-3 mx-auto bg-white shadow-sm">
           <form method="POST">
             '.$error.'
             <div class="form-group">
               <label>Username</label>
-              <input type="text" class="form-control form-control-sm" name="username" required>
+              <input type="text" placeholder="Eg. jdoe123" class="form-control form-control-sm" name="username" required>
             </div>
             <div class="form-group">
               <label>Password</label>
-              <input type="password" class="form-control form-control-sm" name="password" required>
+              <input type="password" placeholder="At least 8 characters" class="form-control form-control-sm" name="password" required>
             </div>
             <div class="form-group">
               <label>Re-Password</label>
@@ -81,17 +81,18 @@ if(isset($_SESSION['id_applicant'])){
             </div>
             <div class="form-group">
               <label>Full name</label>
-              <input type="name" class="form-control form-control-sm" name="name" required>
+              <input type="name" placeholder="Eg. John Doe" class="form-control form-control-sm" name="name" required>
             </div>
             <div class="form-group">
               <label>Email</label>
-              <input type="email" class="form-control form-control-sm" name="email" required>
+              <input type="email" placeholder="Eg. john_doe@gmail.com" class="form-control form-control-sm" name="email" required>
             </div>
             <div class="form-group">
-              <label>Monthly Income</label>
-              <input type="number" class="form-control form-control-sm" name="monthly" required>
+              <label>Monthly Income (RM)</label>
+              <input type="number" min="10" max="300" placeholder="Eg. 40.34, 250" class="form-control form-control-sm" name="monthly" required>
             </div>
             <button class="btn btn-primary d-flex mx-auto" type="submit">Register</button>
+            <small class=" d-block text-center"><a href="login.php" class="nav-link">Already have an account?</a></small>
           </form>
         </div>
       </div>
