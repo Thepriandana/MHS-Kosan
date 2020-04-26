@@ -108,6 +108,7 @@ if(isset($_SESSION['id_applicant'])){
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb ml-2 bg-white px-3 py-2 border mb-3">
                       <li class="breadcrumb-item active" aria-current="page"><a href="residence.php">Residence</a></li>
+                      <li class="breadcrumb-item active" aria-current="page"><a href="#">Edit Residence</a></li>
                     </ol>
                   </nav>
                 </div>
