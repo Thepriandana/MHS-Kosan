@@ -56,25 +56,15 @@ if(isset($_SESSION['id_applicant'])){
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-      <title>Register | Kosan</title>
-      <link rel="icon" href="image/icon.svg">
+      <title>Login | Kosan</title>
+      <link rel="icon" href="images/logo_kosan.ico">
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
       <script src="js/bootstrap.min.js" type="text/javascript"></script>
     </head>
-    <body class="reg-bgimage" style="background: url(\'.../img/login-banner3.jpg\'); position:relative; ">
+    <body class="bg-light">
       <div class="container row mx-auto mt-4">
-      <div class="container-fluid row mx-auto mr-3 mt-3">
-              <div class="col-sm-1"><img src="img/logo_dbkl.png" class="img-fluid" width="150"></div><div class="col-sm-11"><h1>MHS Kosan</h1></div></div>
-              <div class="col-md-11 mx-8 mt-3">
-        <nav class="breadcrumb">
-    <a class="breadcrumb-item" href="index.php">MHSKosan</a>
-    <a class="breadcrumb-item" href="#">Register</a>
-    </nav></div>
-    <div class="col-md-8 border rounded mx-auto" style="text/css{background-color: red;}">
-        <div class="col-md-6 border rounded py-5 mt-4 mx-auto">
-        <h3>Registration</h3>
-        <p>Please fill out the data below.</p>
+        <div class="col-md-4 border rounded py-3 mx-auto bg-white shadow-sm">
           <form method="POST">
             '.$error.'
             <div class="form-group">
@@ -99,13 +89,11 @@ if(isset($_SESSION['id_applicant'])){
             </div>
             <div class="form-group">
               <label>Monthly Income (RM)</label>
-              <input type="number" min="1" max="300" placeholder="Eg. 40.34, 250" class="form-control form-control-sm" name="monthly" required>
+              <input type="number" min="10" max="300" placeholder="Eg. 40.34, 250" class="form-control form-control-sm" name="monthly" required>
             </div>
             <button class="btn btn-primary d-flex mx-auto" type="submit">Register</button>
-            <div class="form-group text-center mt-3"><p>Already have an account?
-      <a href="login.php">Login</a></p></div>
+            <small class=" d-block text-center"><a href="login.php" class="nav-link">Already have an account?</a></small>
           </form>
-        </div>
         </div>
       </div>
     </body>
