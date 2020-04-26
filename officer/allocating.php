@@ -196,8 +196,10 @@ if(isset($_SESSION['id_applicant'])){
               </div>
             </div>
           </div>
-        </body>
-        </html>
+        </div>
+      </div>
+    </body>
+    </html>
       ');
       }
     }
