@@ -191,7 +191,6 @@ if(isset($_SESSION['id_applicant'])){
                   <div class="col-md-6 mx-auto mb-3">
                     '.$form.'
                   </div>
-                </div>
                 <div class="bottom bg-secondary p-2 rounded">
                 </div>
               </div>
