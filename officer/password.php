@@ -127,7 +127,7 @@ if(!isset($_SESSION['id_officer'])){
                   <input type="password" class="form-control" name="re" required>
                 </div>
                 <div class="d-flex">
-                  <button type-"submit" class="btn btn-sm btn-primary ml-auto">Change Password</button>
+                  <button type="submit" class="btn btn-sm btn-primary ml-auto">Change Password</button>
                 </div>
               </form>
             </div>
