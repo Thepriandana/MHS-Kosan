@@ -123,7 +123,7 @@ if(isset($_SESSION['id_applicant'])){
           <script src="../js/bootstrap.min.js" type="text/javascript"></script>
         </head>
         <body>
-          <div class="container mt-5">
+          <div class="container my-5">
       <div class="col-md-10 rounded border shadow-sm py-3 mx-auto row px-0 bg-white">
         <div class="col-auto border-right p-0">
           <ul class="nav" style="display: block;">
