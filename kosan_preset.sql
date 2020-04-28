@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2020 at 05:54 AM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.10
+-- Generation Time: 
+-- サーバのバージョン： 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,164 +21,296 @@ SET time_zone = "+00:00";
 --
 -- Database: `kosan`
 --
-CREATE DATABASE IF NOT EXISTS `kosan` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `kosan`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `allocation`
+-- テーブルの構造 `allocation`
 --
 
-DROP TABLE IF EXISTS `allocation`;
-CREATE TABLE IF NOT EXISTS `allocation` (
-  `allocationID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `allocation` (
+  `allocationID` int(11) NOT NULL,
   `applicationID` int(11) NOT NULL,
   `unitNo` int(11) NOT NULL,
   `formDate` date NOT NULL,
   `duration` int(11) NOT NULL,
-  `endDate` date NOT NULL,
-  PRIMARY KEY (`allocationID`),
-  KEY `applicationID` (`applicationID`),
-  KEY `unitNo` (`unitNo`)
+  `endDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- テーブルのデータのダンプ `allocation`
+--
+
+INSERT INTO `allocation` (`allocationID`, `applicationID`, `unitNo`, `formDate`, `duration`, `endDate`) VALUES
+(1, 1, 3, '2020-03-18', 12, '2021-03-18');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `applicant`
+-- テーブルの構造 `applicant`
 --
 
-DROP TABLE IF EXISTS `applicant`;
-CREATE TABLE IF NOT EXISTS `applicant` (
-  `applicantID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `applicant` (
+  `applicantID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `monthlyIncome` float NOT NULL,
-  PRIMARY KEY (`applicantID`),
-  KEY `userID` (`userID`)
+  `monthlyIncome` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- テーブルのデータのダンプ `applicant`
+--
+
+INSERT INTO `applicant` (`applicantID`, `userID`, `email`, `monthlyIncome`) VALUES
+(1, 1, 'caroldoe@example.com', 170),
+(2, 3, 'thpotet@example.com', 150);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `application`
+-- テーブルの構造 `application`
 --
 
-DROP TABLE IF EXISTS `application`;
-CREATE TABLE IF NOT EXISTS `application` (
-  `applicationID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `application` (
+  `applicationID` int(11) NOT NULL,
   `applicantID` int(11) NOT NULL,
   `residenceID` int(11) NOT NULL,
   `applicationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `requiredMonth` int(11) NOT NULL,
   `requiredYear` int(11) NOT NULL,
-  `status` varchar(11) NOT NULL,
-  PRIMARY KEY (`applicationID`),
-  KEY `applicantID` (`applicantID`),
-  KEY `residenceID` (`residenceID`)
+  `status` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- テーブルのデータのダンプ `application`
+--
+
+INSERT INTO `application` (`applicationID`, `applicantID`, `residenceID`, `applicationDate`, `requiredMonth`, `requiredYear`, `status`) VALUES
+(1, 1, 1, '2020-03-31 01:00:13', 1, 1, 'Approve');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `housingofficer`
+-- テーブルの構造 `housingofficer`
 --
 
-DROP TABLE IF EXISTS `housingofficer`;
-CREATE TABLE IF NOT EXISTS `housingofficer` (
-  `staffID` int(11) NOT NULL AUTO_INCREMENT,
-  `userID` int(11) NOT NULL,
-  PRIMARY KEY (`staffID`),
-  KEY `userID` (`userID`)
+CREATE TABLE `housingofficer` (
+  `staffID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- テーブルのデータのダンプ `housingofficer`
+--
+
+INSERT INTO `housingofficer` (`staffID`, `userID`) VALUES
+(1, 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `residence`
+-- テーブルの構造 `residence`
 --
 
-DROP TABLE IF EXISTS `residence`;
-CREATE TABLE IF NOT EXISTS `residence` (
-  `residenceID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `residence` (
+  `residenceID` int(11) NOT NULL,
   `staffID` int(11) NOT NULL,
   `address` varchar(200) NOT NULL,
   `numUnits` int(11) NOT NULL,
   `sizePerUnit` float NOT NULL,
-  `monthlyRental` float NOT NULL,
-  PRIMARY KEY (`residenceID`),
-  KEY `staffID` (`staffID`)
+  `monthlyRental` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- テーブルのデータのダンプ `residence`
+--
+
+INSERT INTO `residence` (`residenceID`, `staffID`, `address`, `numUnits`, `sizePerUnit`, `monthlyRental`) VALUES
+(1, 1, 'Jl Boulevard XXI', 5, 2, 5);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `unit`
+-- テーブルの構造 `unit`
 --
 
-DROP TABLE IF EXISTS `unit`;
-CREATE TABLE IF NOT EXISTS `unit` (
-  `unitNo` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `unit` (
+  `unitNo` int(11) NOT NULL,
   `residenceID` int(11) NOT NULL,
-  `availability` varchar(11) NOT NULL,
-  PRIMARY KEY (`unitNo`),
-  KEY `residenceID` (`residenceID`)
+  `availability` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- テーブルのデータのダンプ `unit`
+--
+
+INSERT INTO `unit` (`unitNo`, `residenceID`, `availability`) VALUES
+(3, 1, 'used'),
+(4, 1, 'available'),
+(5, 1, 'available'),
+(6, 1, 'used'),
+(7, 1, 'available');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- テーブルの構造 `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `userID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `userID` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(256) NOT NULL,
-  `fullname` varchar(35) NOT NULL,
-  PRIMARY KEY (`userID`)
+  `fullname` varchar(35) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Constraints for dumped tables
+-- テーブルのデータのダンプ `user`
+--
+
+INSERT INTO `user` (`userID`, `username`, `password`, `fullname`) VALUES
+(1, 'usertest', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb', 'Carol (User)'),
+(2, 'admintest', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb', 'Suliw (Admin)'),
+(3, 'mitchgbn', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'Mitch Gibson');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Constraints for table `allocation`
+-- Indexes for table `allocation`
+--
+ALTER TABLE `allocation`
+  ADD PRIMARY KEY (`allocationID`),
+  ADD KEY `applicationID` (`applicationID`),
+  ADD KEY `unitNo` (`unitNo`);
+
+--
+-- Indexes for table `applicant`
+--
+ALTER TABLE `applicant`
+  ADD PRIMARY KEY (`applicantID`),
+  ADD KEY `userID` (`userID`);
+
+--
+-- Indexes for table `application`
+--
+ALTER TABLE `application`
+  ADD PRIMARY KEY (`applicationID`),
+  ADD KEY `applicantID` (`applicantID`),
+  ADD KEY `residenceID` (`residenceID`);
+
+--
+-- Indexes for table `housingofficer`
+--
+ALTER TABLE `housingofficer`
+  ADD PRIMARY KEY (`staffID`),
+  ADD KEY `userID` (`userID`);
+
+--
+-- Indexes for table `residence`
+--
+ALTER TABLE `residence`
+  ADD PRIMARY KEY (`residenceID`),
+  ADD KEY `staffID` (`staffID`);
+
+--
+-- Indexes for table `unit`
+--
+ALTER TABLE `unit`
+  ADD PRIMARY KEY (`unitNo`),
+  ADD KEY `residenceID` (`residenceID`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`userID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `allocation`
+--
+ALTER TABLE `allocation`
+  MODIFY `allocationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `applicant`
+--
+ALTER TABLE `applicant`
+  MODIFY `applicantID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `application`
+--
+ALTER TABLE `application`
+  MODIFY `applicationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `housingofficer`
+--
+ALTER TABLE `housingofficer`
+  MODIFY `staffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `residence`
+--
+ALTER TABLE `residence`
+  MODIFY `residenceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `unit`
+--
+ALTER TABLE `unit`
+  MODIFY `unitNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- ダンプしたテーブルの制約
+--
+
+--
+-- テーブルの制約 `allocation`
 --
 ALTER TABLE `allocation`
   ADD CONSTRAINT `allocation_ibfk_1` FOREIGN KEY (`applicationID`) REFERENCES `application` (`applicationID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `allocation_ibfk_2` FOREIGN KEY (`unitNo`) REFERENCES `unit` (`unitNo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `applicant`
+-- テーブルの制約 `applicant`
 --
 ALTER TABLE `applicant`
   ADD CONSTRAINT `applicant_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `application`
+-- テーブルの制約 `application`
 --
 ALTER TABLE `application`
   ADD CONSTRAINT `application_ibfk_1` FOREIGN KEY (`applicantID`) REFERENCES `applicant` (`applicantID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `application_ibfk_2` FOREIGN KEY (`residenceID`) REFERENCES `residence` (`residenceID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `housingofficer`
+-- テーブルの制約 `housingofficer`
 --
 ALTER TABLE `housingofficer`
   ADD CONSTRAINT `housingofficer_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `residence`
+-- テーブルの制約 `residence`
 --
 ALTER TABLE `residence`
   ADD CONSTRAINT `residence_ibfk_1` FOREIGN KEY (`staffID`) REFERENCES `housingofficer` (`staffID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `unit`
+-- テーブルの制約 `unit`
 --
 ALTER TABLE `unit`
   ADD CONSTRAINT `unit_ibfk_1` FOREIGN KEY (`residenceID`) REFERENCES `residence` (`residenceID`) ON DELETE CASCADE ON UPDATE CASCADE;
