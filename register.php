@@ -73,7 +73,7 @@ if(isset($_SESSION['id_applicant'])){
             </div>
             <div class="form-group">
               <label>Password</label>
-              <input type="password" placeholder="At least 8 characters" class="form-control form-control-sm" name="password" required>
+              <input type="password" placeholder="" class="form-control form-control-sm" name="password" required>
             </div>
             <div class="form-group">
               <label>Re-Password</label>
